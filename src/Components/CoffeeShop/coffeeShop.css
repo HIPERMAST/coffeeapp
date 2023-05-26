@@ -1,0 +1,57 @@
+.coffee-encabezado {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  margin-bottom: 50px;
+}
+
+.coffee-Body {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.coffee-container {
+  display: flex;
+}
+
+.coffee-table {
+  margin-right: 20px; /* Espacio entre la tabla y los detalles */
+  width: 66.67%; /* Ocupa 2/3 del espacio */
+}
+
+.coffee-table th,
+.coffee-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.coffee-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.coffee-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.selected {
+  background-color: #e6f7ff;
+}
+
+.coffee-details {
+  flex-grow: 1; /* Los detalles se expandirán para llenar el espacio restante */
+  border: 1px solid #ccc;
+  text-align: center; /* Centrar los elementos en el detalle */
+  justify-content: center;
+}
+
+.coffee-details h3 {
+  margin-top: 0;
+}
+
+.coffee-image {
+  max-height: 200px; /* Ajusta el valor según tus necesidades */
+  width: 100%;
+}
