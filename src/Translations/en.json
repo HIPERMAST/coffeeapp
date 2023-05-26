@@ -1,0 +1,12 @@
+{
+    "app.title": "The Magical Aroma",
+    "table.number": "#",
+    "table.name": "Name",
+    "table.type": "Type",
+    "table.region": "Region",
+    "coffee.date": "Cultivated on: ",
+    "coffee.notes": "Notes:",
+    "coffee.grown": "Grown at an altitude of: ",
+    "coffee.msnm": "msnm"
+  }
+  

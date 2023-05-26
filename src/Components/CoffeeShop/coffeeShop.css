@@ -52,6 +52,5 @@
 }
 
 .coffee-image {
-  max-height: 200px; /* Ajusta el valor según tus necesidades */
-  width: 100%;
+  max-height: 500px; /* Ajusta el valor según tus necesidades */
 }

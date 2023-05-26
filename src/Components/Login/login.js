@@ -94,18 +94,12 @@ class Login extends Component {
               />
             </div>
             <div className="button-container">
-              <button className="btn btn-primary btn-block" onClick={this.signIn}>
-                Sign In
+              <button className="btn-primary" onClick={this.signIn}>
+              <strong>Log in </strong>
               </button>
-              <button className="btn btn-primary btn-block">Cancel</button>
-            </div>
-            <div className="SignUpOffer">
-              <p className="text">
-                Don't have an account?{" "}
-                <a href="./signup" className="link">
-                  Sign Up
-                </a>
-              </p>
+              <button className="btn-cancel">
+                <strong>Cancel </strong>
+              </button>
             </div>
           </div>
         </div>

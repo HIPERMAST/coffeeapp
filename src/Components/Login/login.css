@@ -3,15 +3,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  margin-bottom: 40px;
 }
 
 .coffee-encabezado {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 10px;
 }
 
 .title {
@@ -20,7 +20,8 @@
 }
 
 .Image {
-  margin-top: 20px;
+  margin-top: 10px;
+  max-width: 100%;
 }
 
 .LoginPage {
@@ -33,28 +34,36 @@
 
 .LoginForm {
   margin-top: 20px;
-  justify-content: left;
-  align-items: left;
 }
 
 .login-label {
   font-weight: bold;
-  justify-content: left;
-  align-items: left;
   margin-bottom: 10px;
+  text-align: left;
 }
 
 .form-group {
   margin-bottom: 20px;
-  justify-content: left;
-  align-items: left;
 }
 
 .button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 20px;
 }
 
-.SignUpOffer {
-  margin-top: 20px;
-  text-align: center;
+.button-container button {
+  flex-grow: 1;
+  margin: 0 5px;
+}
+
+.btn-primary {
+  background-color: green;
+  border-color: green;
+}
+
+.btn-cancel {
+  background-color: red;
+  border-color: red;
 }

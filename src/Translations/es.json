@@ -1,0 +1,12 @@
+{
+    "app.title": "El aroma mágico",
+    "table.number": "#",
+    "table.name": "Nombre",
+    "table.type": "Tipo",
+    "table.region": "Región",
+    "coffee.date": "Fecha de cultivo: ",
+    "coffee.notes": "Notas:",
+    "coffee.grown": "Cultivado a una altura de: ",
+    "coffee.msnm": "msnm"
+  }
+  
