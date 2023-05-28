@@ -1,12 +1,20 @@
 {
-    "app.title": "The Magical Aroma",
-    "table.number": "#",
-    "table.name": "Name",
-    "table.type": "Type",
-    "table.region": "Region",
-    "coffee.date": "Cultivated on: ",
-    "coffee.notes": "Notes:",
-    "coffee.grown": "Grown at an altitude of: ",
-    "coffee.msnm": "msnm"
+    "title": "The magical aroma",
+    "id": "#",
+    "name": "Name",
+    "type": "Type",
+    "region": "Region",
+    "date": "Cultivated on: ",
+    "notes": "Notes:",
+    "grown": "Grown at an altitude of: ",
+    "msnm": "masl",
+    "contactUs": "Contact us",
+    "loginTitle": "Login",
+    "username": "Username",
+    "loginPlaceholder": "Enter your username",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "loginButton": "Login",
+    "cancelButton": "Cancel"
   }
   

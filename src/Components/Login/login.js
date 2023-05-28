@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import "./login.css";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
-import LoginPhoto from "../../Files/Photos/Cafe.jpeg";
+import LoginPhoto from "../../Files/Photos/Cafe.png";
+import enTranslations from "../../Translations/en.json";
+import esTranslations from "../../Translations/es.json";
 
 const loginUrl = "http://localhost:3001/login";
 
@@ -12,6 +14,8 @@ class Login extends Component {
       username: "",
       password: "",
     },
+    errorMessage: "",
+    currentLanguage: navigator.language.substring(0, 2),
   };
 
   handleChange = (e) => {
@@ -37,71 +41,92 @@ class Login extends Component {
           console.log(response.data.message);
           const role = "Administrador";
           this.props.actualizarRole(role);
-
-          // Perform other operations after successful authentication
-        }
-        if (response.status === 401) {
-          console.log(response.data.status);
-          console.log(response.data.message);
-
-          // Handle failed authentication case
         }
       })
-      .catch((error) => {
-        const message = `Error during authentication: ${error}`;
-        console.error(message);
-
-        // Handle request error
+      .catch(() => {
+        this.setState({ errorMessage: "Las credenciales proporcionadas son incorrectas." });
       });
   };
 
+  changeLanguage = (language) => {
+    this.setState({ currentLanguage: language });
+  };
+
+
+  renderContactInfo = () => {
+    const { currentLanguage } = this.state;
+    const translations = currentLanguage === 'en' ? enTranslations : esTranslations;
+
+    return (
+      <div className="contact-info">
+        <p>
+          {translations.contactUs}:
+          +57 3102105253 - info@elaromamagico.com - @elaromamagico
+        </p>
+      </div>
+    );
+  };
+
   render() {
+    const { currentLanguage } = this.state;
+    const translations = currentLanguage === 'en' ? enTranslations : esTranslations;
+
     return (
       <div className="PrincipalContainer">
         <div className="coffee-encabezado">
           <h1 className="title" style={{ textAlign: "left" }}>
-            El aroma magico
+            {translations.title}
           </h1>
           <div className="Image">
+            <hr />
             <img src={LoginPhoto} alt="BumpClass" className="img-fluid" />
+            <hr />
           </div>
         </div>
         <div className="LoginPage">
           <div className="LoginForm">
-            <h1 className="title" style={{ textAlign: "left" }}>
-              Inicio de Sesión
+            <h1 className="LoginTitle">
+              {translations.loginTitle}
             </h1>
+            <div className="form-groups">
             <div className="form-group">
-              <label className="login-label">Login</label>
+              <label className="login-label">{translations.username}</label>
               <input
                 type="text"
                 className="form-control"
                 name="username"
-                placeholder="Enter Email"
+                placeholder={translations.loginPlaceholder}
                 value={this.state.form.username}
                 onChange={this.handleChange}
               />
             </div>
             <div className="form-group">
-              <label className="login-label">Password</label>
+              <label className="login-label">{translations.password}</label>
               <input
                 type="password"
                 className="form-control"
                 name="password"
-                placeholder="Enter Password"
+                placeholder={translations.passwordPlaceholder}
                 value={this.state.form.password}
                 onChange={this.handleChange}
               />
             </div>
             <div className="button-container">
               <button className="btn-primary" onClick={this.signIn}>
-              <strong>Log in </strong>
+                <strong>{translations.loginButton}</strong>
               </button>
               <button className="btn-cancel">
-                <strong>Cancel </strong>
+                <strong>{translations.cancelButton}</strong>
               </button>
             </div>
+            {this.state.errorMessage && (
+              <div className="error-message">{this.state.errorMessage}</div>
+            )}
           </div>
+          </div>
+        </div>
+        <div className="coffee-footer">
+          {this.renderContactInfo()}
         </div>
       </div>
     );

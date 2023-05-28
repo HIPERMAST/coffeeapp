@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import './coffeeShop.css';
-import Cafe from '../../Files/Photos/Cafe.jpeg';
+import Cafe from '../../Files/Photos/Cafe.png';
+import enTranslations from '../../Translations/en.json';
+import esTranslations from '../../Translations/es.json';
 
 class CoffeeShop extends Component {
   state = {
     selectedCoffee: null,
     coffees: [],
+    currentLanguage: 'en',
   };
 
   componentDidMount() {
@@ -24,6 +27,11 @@ class CoffeeShop extends Component {
         .catch(error => {
           console.error('Error fetching coffees:', error);
         });
+    }
+
+    const userLanguage = navigator.language.substring(0, 2);
+    if (userLanguage === 'es') {
+      this.setState({ currentLanguage: 'es' });
     }
   }
 
@@ -47,17 +55,25 @@ class CoffeeShop extends Component {
   };
 
   renderCoffeeDetails = () => {
-    const { selectedCoffee } = this.state;
+    const { selectedCoffee, currentLanguage } = this.state;
+    const translations = currentLanguage === 'en' ? enTranslations : esTranslations;
 
     if (selectedCoffee) {
+      const date = new Date(selectedCoffee.fecha_cultivo);
+      const formattedDate = date.toLocaleDateString(currentLanguage, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
       return (
+        <div className="coffee-details">
         <table>
           <tbody>
             <tr>
               <strong className="coffee-detail-name">{selectedCoffee.nombre}</strong>
             </tr>
             <tr>
-              <td className="coffee-detail-text">{selectedCoffee.fecha_cultivo}</td>
+              <td className="coffee-detail-text">{formattedDate}</td>
             </tr>
             <tr>
               <td>
@@ -65,42 +81,69 @@ class CoffeeShop extends Component {
               </td>
             </tr>
             <tr>
-            Notas:
+              {translations.notes}
             </tr>
             <tr>
               <td className="coffee-detail-name">{selectedCoffee.notas}</td>
             </tr>
             <tr>
               <td className="coffee-detail-text">
-                <strong>Cultivado a una altura de:</strong>
+                <strong>{translations.grown}</strong>
               </td>
             </tr>
             <tr>
-              <strong className="coffee-detail-name">{selectedCoffee.altura} msnm</strong>
+              <strong className="coffee-detail-name"> {selectedCoffee.altura} {translations.msnm}</strong>
             </tr>
           </tbody>
         </table>
+        </div>
       );
     } else {
-      return ;
+      return (
+        <div className="no-coffee-selected">
+        </div>
+      );
     }
   };
 
-  render() {
-    const { coffees } = this.state;
+  renderContactInfo = () => {
+    const { currentLanguage } = this.state;
+    const translations = currentLanguage === 'en' ? enTranslations : esTranslations;
 
     return (
-      <div className="coffee-encabezado">
-        <h2>El aroma mágico</h2>
-        <img src={Cafe} alt="Cafe" />
+      <div className="contact-info">
+        <p>
+          {translations.contactUs}:
+          +57 3102105253 - info@elaromamagico.com - @elaromamagico
+        </p>
+      </div>
+    );
+  };
+
+  render() {
+    const { coffees, currentLanguage } = this.state;
+    const translations = currentLanguage === 'en' ? enTranslations : esTranslations;
+
+    return (
+      <div className="PrincipalContainer">
+        <div className="coffee-encabezado">
+          <div className="coffee-title">
+            <h1>{translations.title}</h1>
+          </div>
+          <div className="Image">
+            <hr />
+            <img src={Cafe} alt="Cafe" className="img-fluid" />
+            <hr />
+          </div>
+        </div>
         <div className="coffee-Body">
           <table className="coffee-table">
             <thead>
               <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Region</th>
+                <th>{translations.name}</th>
+                <th>{translations.type}</th>
+                <th>{translations.region}</th>
               </tr>
             </thead>
             <tbody>
@@ -110,7 +153,7 @@ class CoffeeShop extends Component {
                   className={`coffee-row ${this.state.selectedCoffee === coffee ? 'selected' : ''}`}
                   onClick={() => this.handleCoffeeClick(coffee)}
                 >
-                  <td>{coffee.id}</td>
+                  <td><strong>{coffee.id}</strong></td>
                   <td>{coffee.nombre}</td>
                   <td>{coffee.tipo}</td>
                   <td>{coffee.region}</td>
@@ -118,9 +161,10 @@ class CoffeeShop extends Component {
               ))}
             </tbody>
           </table>
-          <div className="coffee-details">
             {this.renderCoffeeDetails()}
-          </div>
+        </div>
+        <div className="coffee-footer">
+          {this.renderContactInfo()}
         </div>
       </div>
     );

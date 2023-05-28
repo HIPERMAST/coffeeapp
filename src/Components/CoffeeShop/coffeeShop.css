@@ -3,37 +3,33 @@
   flex-direction: column;
   align-items: left;
   justify-content: left;
-  margin-bottom: 50px;
 }
 
 .coffee-Body {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-}
-
-.coffee-container {
-  display: flex;
+  align-items: flex; 
 }
 
 .coffee-table {
-  margin-right: 20px; /* Espacio entre la tabla y los detalles */
-  width: 66.67%; /* Ocupa 2/3 del espacio */
+  margin-right: 100px; /* Espacio entre la tabla y los detalles */
 }
 
 .coffee-table th,
 .coffee-table td {
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 15px;
+  border-bottom: 1px solid #dddddd;
 }
 
 .coffee-table th {
-  background-color: #f2f2f2;
+  background-color: #333A40;
   font-weight: bold;
+  color: #ffffff;
 }
 
 .coffee-table tr:hover {
   background-color: #f9f9f9;
+  cursor: pointer;
 }
 
 .selected {
@@ -42,15 +38,39 @@
 
 .coffee-details {
   flex-grow: 1; /* Los detalles se expandirán para llenar el espacio restante */
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   text-align: center; /* Centrar los elementos en el detalle */
   justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background-color: rgba(224, 187, 187, 0.2); /* Color de fondo con opacidad del 20% */
 }
 
-.coffee-details h3 {
-  margin-top: 0;
-}
 
 .coffee-image {
-  max-height: 500px; /* Ajusta el valor según tus necesidades */
+  max-width: 250px;
+}
+
+.Image {
+  margin-top: -1%;
+  max-width: 100%;
+}
+
+.coffee-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  font-family: "Indie Flower", cursive;
+  padding-bottom: -10px;
+}
+
+.coffee-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.no-coffee-selected {
+  visibility: hidden;
 }
